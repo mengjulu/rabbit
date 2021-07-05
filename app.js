@@ -57,15 +57,6 @@ const fileFilter = (req, file, cb) => {
         cb(null, false);
     }
 };
-
-// const limits =  (req, file, cb) => {
-//     const maxSize = 1024 * 1024;
-//     if (req.file.size <= maxSize) {
-//         cb(null ,true);
-//         } else {
-//         cb(null, false);
-//         }
-// };
 app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single("subImg"));
 
 //api config

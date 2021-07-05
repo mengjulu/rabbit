@@ -1,0 +1,22 @@
+<%- include("../includes/header")%>
+<%- include("../includes/navbar")%>
+
+<div class="container-fluid">
+    <form class="flexColumn createSubforum" method="post" action="/r/create/subforum" enctype="multipart/form-data">
+        <img class="createImg" src="/static/image/subImage/createsub.svg" alt="">
+        <p>Create new subforum</p>
+
+        <input class="createSubforumItem" type="text" name="subName" placeholder="Subforum name" required>
+        <% if (message !== undefined && message != "") { %>
+        <span class="createSubArr"><%= message%></span>
+        <% } %>
+        <textarea class="createSubforumItem" name="description" rows="8" placeholder="Description"
+            required></textarea>
+        <input class="imgUpload" type="file" name="subImg" required>
+        <p class="uploadWarning">(File type: jpeg, jpg, svg, png, File size: 1MB)</p>
+        <% if (alert !== undefined && alert != "") { %>
+            <span class="createSubArr"><%= alert%></span>
+            <% } %>
+        <button class="btn btn-danger createSubforumItem" type="submit">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,17 @@
+header{
+    width: 100%;
+    top:0;
+}
+.brandIcon {
+    position: absolute;
+    left: 1rem;
+}
+
+.searchBar {
+    width: 40%;
+    margin: 1vmin 3vmin;
+}
+
+.navbarDropdown {
+    margin-left: 2vmin;
+}

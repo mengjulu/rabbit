@@ -1,0 +1,62 @@
+<div class="flexColumn">
+    <div class="createCommentBox flexColumn">
+        <% if (user){ %>
+        <form class="flexColumn" action="/createcomment" method="POST">
+            <p>Comment as <a href="/user/<%=user.account%>"> <%= user.account %> </a></p>
+            <textarea class="createCommentItem" name="commentContent" cols="5" rows="4"
+                placeholder="Comment here!"></textarea>
+            <button name="postId" value="<%=e._id%>" class="btn btn-danger createCommentBtn">submit</button>
+        </form>
+        <%}else{%>
+        <p> Please <a class="btn btn-outline-warning" href="/login">Log in</a> before comment!</p>
+        <%}%> 
+    </div>
+
+    <hr class="commentHr">
+
+        <%if(comments.length !== 0){%>
+        <div class="flexRow commentSort">
+            <div class="dropdown topLineBtn">
+                <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Sort
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="?sort=new">New (default)</a></li>
+                  <li><a class="dropdown-item" href="?sort=old">Old</a></li>
+                </ul>
+              </div>
+        </div>
+        <%for(let comment of comments){ %>
+        <div class="comment">
+            <div class="flexRow">
+                <p class="commentIntro" name="user" value="<%= comment.user %>">
+                    <img class="icon" src="/static/image/user/postUser.svg" alt="">
+                    <a href="<%=comment.user ? "/user/" + comment.user.account : "javascript:void(0)"%>"><%= comment.user ? comment.user.account : "User" %>
+                    </a>·
+                    <%= timeAgo(comment.time)%>
+                    <% if(user && comment.user?.account === user.account){%>
+                    <div class="dropdown commentActionBox" role="group">
+                        <img src="/static/image/post/option.svg" alt="" class="commentActionIcon dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <ul class="dropdown-menu">
+                            <li class="commentEdit dropdown-item commentActionItem" data-commentid="<%=comment._id%>">
+                                Edit</li>
+                            <li class="commentDelete dropdown-item commentActionItem" data-commentid="<%=comment._id%>"
+                                data-postid="<%=e._id%>">Delete</li>
+                        </ul>
+                    </div>
+                    <%}%>
+            </div>
+            <p class="commentContent"><%=comment.content%></p>
+        </div>
+        <%}%>
+        <%}else{%>
+        <div class="commentBox">
+            <p>No comment yet :( </p>
+            <p>Be the first to share thoughts!</p>
+        </div>  
+        <%}%> 
+ </div>
+ 
+ <script src="/static/util/comment.js"></script>

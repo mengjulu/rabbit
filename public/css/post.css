@@ -1,0 +1,332 @@
+/* mainPage */
+.post {
+    border: 1px rgb(211, 211, 211, 0.4) solid;
+    border-radius: 5px;
+    width: 75vw;
+    min-height: 15vh;
+    margin: 2vmin;
+    padding: 1vmin;
+    font-size: 3vmin;
+}
+
+.postIcon {
+    width: 1.3rem;
+    padding-bottom: 1vmin;
+    color: crimson;
+}
+
+.post:hover {
+    border-color: rgb(211, 211, 211, 1);
+
+}
+
+.postTitle {
+    font-size: 0.9rem;
+    padding: 1vmin 0;
+}
+
+.postContent {
+    width: 100%;
+    margin: 2vmin;
+}
+
+.postIntro {
+    color: lightgray;
+    font-size: 0.8rem;
+}
+
+.postIntro>a {
+    font-size: 0.8rem;
+}
+
+.postContentBottom {
+    justify-content: space-between;
+    align-items: baseline;
+    width: 95%;
+    font-size: 0.7rem;
+}
+
+.postActionBtn {
+    font-size: 100%;
+}
+
+.postActionBtn:hover {
+    color: lightgray;
+}
+
+.postActionBtn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.vote {
+    align-items: center;
+    margin: 2vmin 0;
+    padding: 2vmin 0;
+    width: 3rem;
+    font-size: 0.7rem;
+    min-height: 1rem;
+}
+
+.voteBtn {
+    background-color: transparent;
+    border: solid lightgrey;
+    border-width: 0 2.5px 2.5px 0;
+    width: 0.5rem;
+    padding: 0.25rem;
+}
+
+.upVoteArrow {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.downVoteArrow {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.upVoteArrow:hover,
+.downVoteArrow:hover {
+    border-color: rgba(6, 38, 75, 0.8);
+}
+
+.voteClicked {
+    border: solid rgb(6, 38, 75);
+    box-shadow: 1px 1px 1px rgb(6, 38, 75, 0.25);
+    border-width: 0 2.5px 2.5px 0;
+}
+
+.shareBtnItem {
+    cursor: pointer;
+    font-size: 0.7rem;
+}
+
+.sideBox {
+    border: 1px rgb(211, 211, 211, 0.4) solid;
+    border-radius: 5px;
+    margin: 2vmin;
+    padding: 1vmin;
+    width: 20%;
+    max-height: 85vh;
+    position: fixed;
+    right: 0;
+    justify-content: center;
+    text-align: center;
+}
+
+.sideSubForumBox {
+    max-height: 78vh;
+    overflow: scroll;
+    text-align: center;
+}
+
+.sideSubForumBtn {
+    width: 90%;
+    margin: 0.5vmin 1vmin;
+}
+
+.sideSubIcon {
+    width: 2rem;
+    padding-bottom: 1vmin;
+    color: crimson;
+}
+
+.topLineBox {
+    width: 75vw;
+    margin: 2vmin 2vmin 0 2vmin;
+    justify-content: flex-end;
+}
+
+.topLineBtn {
+    margin: 0 1vmin;
+}
+
+.allSub {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .post {
+        width: 90vw;
+    }
+
+    .sideBox {
+        display: none;
+    }
+
+    .vote {
+        max-height: 15vh;
+    }
+
+    .topLineBox {
+        width: 90vw;
+    }
+
+    .shareItem {
+        font-size: 2.2vmin;
+    }
+
+    .allSub {
+        display: flex;
+    }
+}
+
+/* CreatepostPage */
+.createPostBox {
+    margin: 3vmin;
+    align-items: center;
+}
+
+.createLine {
+    width: 60vw;
+    margin: 2vmin;
+    min-height: 6vh;
+    align-self: center;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.createImg {
+    margin: 1vmin;
+    width: 15vmin;
+}
+
+.content {
+    width: 60vw;
+    min-height: 20vh;
+    margin: 2vmin;
+    align-self: center;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.postBtn {
+    text-align: center;
+    align-self: flex-end;
+}
+
+.subforumBtn {
+    width: auto;    
+    margin: 1vmin 0;
+    align-self: flex-start;
+}
+
+.createpostArr {
+    width: 60vw;
+    color: crimson;
+    text-align: center;
+    font-size: 2.5vmin;
+    border: solid 1px;
+    padding: 1vmin;
+    margin: 1vmin 0;
+    background-color: rgba(220, 20, 60, 0.2);
+}
+
+.editBox {
+    width: 60vw;
+    align-self: center;
+}
+
+/* postPage */
+.postPageBox {
+    max-width: 100vw;
+    height: 85vh;
+    margin: 1vmin;
+    padding: 1vmin;
+    border: 1px rgb(211, 211, 211, 0.4) solid;
+    border-radius: 5px;
+    overflow: scroll;
+}
+
+.fullPost {
+    padding: 1vmin;
+    width: 100vw;
+}
+
+.singlePostContent {
+    width: 95%;
+    font-size: 0.8rem;
+    padding: 0 1vmin 5vmin 1vmin;
+    white-space: pre-line;
+    word-break: break-word;
+}
+
+.commentBox {
+    font-size: 0.8rem;
+}
+
+.commentHr {
+    width: 95%;
+}
+
+.commentSort {
+    padding: 2% 4%;
+    justify-content: flex-end;
+}
+
+.commentIntro {
+    margin: 0 1vmin;
+    font-size: 0.8rem;
+    align-self: baseline;
+}
+
+.commentActionBox {
+    margin: 0 1vmin;
+    align-self: baseline;
+}
+
+.commentActionIcon {
+    width: 3vmin;
+    height: 3vmin;
+}
+
+.commentActionItem {
+    font-size: 0.7rem;
+}
+
+.commentContent {
+    font-size: 0.8rem;
+    width: 100%;
+    padding: 2% 5%;
+    align-self: center;
+    white-space: pre-line;
+}
+
+.editCommentBox {
+    justify-content: flex-end;
+}
+
+.editComment {
+    width: 100%;
+    border: solid 1px lightgrey;
+    border-radius: 5px;
+}
+
+.editCancel {
+    margin: 1vmin;
+}
+.editSubmit {
+    margin: 1vmin 0 1vmin 1vmin;
+}
+
+.createCommentBox {
+    width: 100%;
+    margin: 0 1vmin;
+    font-size: 0.8rem;
+}
+
+.createCommentBtn {
+    width: 20%;
+    margin: 2% 5%;
+    align-self: flex-end;
+}
+
+.createCommentItem {
+    width: 95%;
+    border: solid 1px lightgrey;
+    border-radius: 5px;
+    padding: 0 1vmin;
+}

@@ -1,0 +1,30 @@
+ <div class="flexRow postContentBottom">
+     <a class="btn postActionBtn" href="/r/<%= subforum.name %>/<%= e.title %>">
+         <%= e.comment === undefined ? 0 :  e.comment.length %> comments
+     </a>
+     <button data-id="<%= e._id%>" class="savedPostBtn btn postActionBtn">
+         <%= poststate[0]?.saved ? "Unsave" : "Save" %>
+     </button>
+     <div class="dropdown">
+         <button class="dropdown-toggle btn postActionBtn" type="button" id="postActionDropdown"
+             data-bs-toggle="dropdown" aria-expanded="false">
+             Share
+         </button>
+         <ul class="dropdown-menu" aria-labelledby="postActionDropdown">
+             <li class="shareBtnItem dropdown-item copyLink" data-clipboard-text="<%= url %>/r/<%= subforum.name %>/<%= e.title %>">
+                 Copy link</li>
+             <li><a class="dropdown-item shareBtnItem"
+                     href="mailto:?subject=Check out this post!&body=Come and see this website! <%= url %>/r/<%= subforum.name %>/<%= e.title %>">Send
+                     via mail</a></li>
+         </ul>
+     </div>
+     <%if(user && user.id == e.user?.id) {%>
+     <a class="btn postActionBtn"
+         href="/r/<%= subforum.name %>/<%= e.title %>/<%= e.url ? "editlink" : "editpost"%>">Edit</a>
+     <button data-id="<%= e._id %>" data-sub="<%= subforum.name %>"
+         class="btn postActionBtn deletePostBtn">Delete</button>
+     <%}%>
+</div>
+
+<script>new ClipboardJS(".copyLink");</script>
+<script src="/static/util/post.js"></script>

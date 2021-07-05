@@ -1,0 +1,31 @@
+<%- include("includes/header")%>
+<%- include("includes/navbar")%>
+
+<div class="m-2 container-fluid">
+    <%if(posts.length !== 0){%>
+    <div class="flexRow">
+        <h5>Search results for〖<%= searchKey %>〗</h5>
+    </div>
+    <%for(let post of posts) {%>
+    <div class="flexRow searchResult">
+        <%- include("includes/vote", {e: post, poststate: post.poststate})%>
+        <div class="flexColumn postContent">
+            <a class="postTitle" href="/r/<%= post.subforum.name %>/<%= post.title %>">
+                <%= post.title %>
+            </a>
+            <p class="postIntro">
+                <a href="/r/<%= post.subforum.name %>">r/<%= post.subforum.name %> </a>
+                ・ Posted by <a href="<%= post.user ? "/user/" + post.user.account : "javascript:void(0)" %>">
+                    <%= post.user ? post.user.account : "User" %></a> ・ <%= timeAgo(post.time)%>
+            </p>
+            <%- include("includes/postAction", {e: post, subforum: post.subforum, poststate: post.poststate})%>
+        </div>
+    </div>
+    <%}%>
+</div>
+<%}else{%>
+        <h5>Sorry! There were no results for〖<%= searchKey %>〗</h5>
+    
+    <%}%>
+</div>
+    

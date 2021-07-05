@@ -1,0 +1,7 @@
+<div class="flexColumn vote">
+    <button class="<%= user && poststate[0]?.vote == 1 ? "voteClicked" : null%> voteBtn upVoteArrow" data-vote="upvote" data-id="<%=e._id%>"></button>
+    <span class="voteNum"><%= e.voteNum < 1000 ? e.voteNum : Math.floor(e.voteNum/1000)+"k" %></span>
+    <button class="<%= user && poststate[0]?.vote == -1 ? "voteClicked" : null%> voteBtn downVoteArrow" data-vote="downvote" data-id="<%=e._id%>"></button>
+</div>
+
+<script src="/static/util/post.js"></script>

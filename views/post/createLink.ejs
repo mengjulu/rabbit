@@ -1,0 +1,24 @@
+<%- include("../includes/header")%>
+<%- include("../includes/navbar")%>
+
+<div class="container-fluid">
+    <form action="/create/link" method="POST" class="flexColumn createPostBox">
+        <img src="/static/image/post/link.svg" class="createImg">
+        <p>Create a new link</p>
+          <div class="flexColumn editBox">
+            <select name="subforum" class="subforumBtn btn btn-danger" required>
+                <option disabled>Choose subforum</option>
+                <% for (let sub of subforum){ 
+                    let selected = (  sub.name == path ) ? "selected" : "";%>
+                <option value="<%=sub.id%>" <%=selected%>><%=sub.name%></option>
+                <%}%>
+              </select>
+        Title <input name="title" class="createLine" type="text" placeholder="Title">
+        <% if (message !== undefined && message != "") { %>
+            <span class="createpostArr"><%= message%></span>
+            <% } %>
+        Url <input type="url" name="url" class="createLine" placeholder="Url">
+        <button type="submit" class="btn btn-danger postBtn">Submit</button> 
+        </div> 
+    </form>
+</div>

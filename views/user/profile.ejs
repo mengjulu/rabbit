@@ -1,0 +1,163 @@
+<%- include("../includes/header")%>
+<%- include("../includes/navbar")%>
+
+<div class="container-fluid flexRow">
+    <div>
+        <nav class="profileBox">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-post-tab" data-bs-toggle="tab" data-bs-target="#nav-post"
+                    type="button" role="tab" aria-controls="nav-post" aria-selected="false"> Post</button>
+                <button class="nav-link" id="nav-comment-tab" data-bs-toggle="tab" data-bs-target="#nav-comment"
+                    type="button" role="tab" aria-controls="nav-comment" aria-selected="false">Comment</button>
+                <%if(user && findUser.account === user.account){%>
+                <button class="nav-link" id="nav-upvoted-tab" data-bs-toggle="tab" data-bs-target="#nav-upvoted"
+                    type="button" role="tab" aria-controls="nav-upvoted" aria-selected="false">Upvoted</button>
+                <button class="nav-link" id="nav-downvoted-tab" data-bs-toggle="tab" data-bs-target="#nav-downvoted"
+                    type="button" role="tab" aria-controls="nav-downvoted" aria-selected="false">Downvoted</button>
+                <button class="nav-link" id="nav-downvoted-tab" data-bs-toggle="tab" data-bs-target="#nav-saved"
+                    type="button" role="tab" aria-controls="nav-saved" aria-selected="false">Saved</button>
+                <%}%>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-post" role="tabpanel" aria-labelledby="nav-post-tab">
+                    <%if(post.length === 0){%>
+                        <p class="postContent">The user does not post anything yet.</p>
+                        <%}%>
+                    <%post.forEach(post => {%>
+                <div class="flexRow post">
+                    <div class="flexColumn postContent">
+                        <span>
+                            <a class="postTitle" href="/r/<%= post.subforum.name %>/<%= post.title %>">
+                                <%= post.title %>
+                            </a>
+                        </span>
+                        <p class="postIntro">
+                            <a class="postTitle" href="/r/<%= post.subforum.name %>">r/<%= post.subforum.name %></a>
+                            ・ Posted by <a href="<%=post.user ? "/user/" + post.user.account : "javascript:void(0)" %>"><%= post.user ? post.user.account : "User" %></a>
+                            ・ <%= timeAgo(post.time)%>
+                        </p>
+                    </div>
+                </div>
+                <%})%>
+            </div>
+
+            <div class="tab-pane fade" id="nav-comment" role="tabpanel" aria-labelledby="nav-comment-tab">
+                <%if(comment.length === 0){%>
+                    <p class="postContent">The user does not comment anything yet.</p>
+                    <%}%>
+                <%comment.forEach(comment => {%>
+                <div class="flexRow post">
+                    <div class="flexColumn postContent">
+                        <span>
+                            <a class="postTitle" href="/r/<%= comment.post.subforum.name %>/<%= comment.post.title %>">
+                                <%= comment.post.title %>
+                            </a>
+                        </span>
+                        <p class="postIntro">
+                            <a class="postTitle"
+                                href="/r/<%= comment.post.subforum.name %>">r/<%= comment.post.subforum.name %></a>
+                            ・ Posted by <a
+                                href="<%=comment.post.user ? "/user/" + comment.post.user.account : "javascript:void(0)" %>"><%= comment.post.user ? comment.post.user.account : "User" %></a>
+                            ・ <%= timeAgo(comment.post.time)%>
+                        </p>
+                    </div>
+                </div>
+                <%})%>
+            </div>
+
+            <%if(user && findUser.account === user.account){%>
+            <div class="tab-pane fade" id="nav-upvoted" role="tabpanel" aria-labelledby="nav-upvoted-tab">
+                <%if(upvoted.length === 0){%>
+                    <p class="postContent">You do not upvote anything yet.</p>
+                    <%}%>
+                <%upvoted.forEach(upvoted => {%>
+                <div class="flexRow post">
+                    <div class="flexColumn postContent">
+                        <span>
+                            <a class="postTitle" href="/r/<%= upvoted.post.subforum.name %>/<%= upvoted.post.title %>">
+                                <%= upvoted.post.title %>
+                            </a>
+                        </span>
+                        <p class="postIntro">
+                            <a class="postTitle"
+                                href="/r/<%= upvoted.post.subforum.name %>">r/<%= upvoted.post.subforum.name %></a>
+                            ・ Posted by <a
+                                href="<%=upvoted.post.user ? "/user/" + upvoted.post.user.account : "javascript:void(0)" %>"><%= upvoted.post.user ? upvoted.post.user.account : "User" %></a>
+                            ・ <%= timeAgo(upvoted.post.time)%>
+                        </p>
+                    </div>
+                </div>
+                <%})%>
+            </div>
+            <div class="tab-pane fade" id="nav-downvoted" role="tabpanel" aria-labelledby="nav-downvoted-tab">
+                <%if(downvoted.length === 0){%>
+                    <p class="postContent">You do not downvote anything yet.</p>
+                    <%}%>
+                <%downvoted.forEach(downvoted => {%>
+                <div class="flexRow post">
+                    <div class="flexColumn postContent">
+                        <span>
+                            <a class="postTitle"
+                                href="/r/<%= downvoted.post.subforum.name %>/<%= downvoted.post.title %>">
+                                <%= downvoted.post.title %>
+                            </a>
+                        </span>
+                        <p class="postIntro">
+                            <a class="postTitle"
+                                href="/r/<%= downvoted.post.subforum.name %>">r/<%= downvoted.post.subforum.name %></a>
+                            ・ Posted by <a
+                                href="<%=downvoted.post.user ? "/user/" + downvoted.post.user.account : "javascript:void(0)" %>"><%= downvoted.post.user ? downvoted.post.user.account : "User" %></a>
+                            ・ <%= timeAgo(downvoted.post.time)%>
+                        </p>
+                    </div>
+                </div>
+                <%})%>
+            </div>
+            <div class="tab-pane fade" id="nav-saved" role="tabpanel" aria-labelledby="nav-downvoted-tab">
+                <%if(saved.length === 0){%>
+                    <p class="postContent">You do not save anything yet.</p>
+                    <%}%>
+                <%saved.forEach(saved => {%>
+                <div class="flexRow post">
+                    <div class="flexColumn postContent">
+                        <span>
+                            <a class="postTitle" href="/r/<%= saved.post.subforum.name %>/<%= saved.post.title %>">
+                                <%= saved.post.title %>
+                            </a>
+                        </span>
+                        <p class="postIntro">
+                            <a class="postTitle"
+                                href="/r/<%= saved.post.subforum.name %>">r/<%= saved.post.subforum.name %></a>
+                            ・ Posted by <a
+                                href="<%=saved.user ? "/user/" + saved.user.account : "javascript:void(0)" %>"><%= saved.post.user ? saved.post.user.account : "User" %></a>
+                            ・ <%= timeAgo(saved.post.time)%>
+                        </p>
+                    </div>
+                </div>
+                <%})%>
+            </div>
+            <%}%>
+            </div>
+    </div>
+    <div class="sideBox">
+        <img class="authItemAvatar" src="/static/image/user/postUser.svg" alt="">
+        <p><%=findUser.account%></p>
+            <p>Register Time: <%=findUser.createDate.toLocaleDateString()%></p>
+            <% if(user && findUser.account === user.account){%>
+            <div class="flowColumn profileSideBox">
+               
+                <%if(findUser.subscribed.length === 0){%>
+                    <p class="profileSideItem">You haven't subscribe any subs yet!</p>
+                    <%}else{%>
+                <div class="profileSideItem">
+                    <p>subscribed subforum</p>
+                    <%for(let sub of findUser.subscribed) {%>
+                    <a class="btn btn-outline-warning sideSubForumBtn" href="/r/<%= sub%>">r/<%= sub %></a>
+                    <%}%>
+                </div>
+             </div>
+             <%}%>
+        <%}%>
+    </div>
+</div>

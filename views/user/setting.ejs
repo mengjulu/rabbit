@@ -1,0 +1,13 @@
+<%- include("../includes/header")%>
+<%- include("../includes/navbar")%>
+
+<div class="container-fluid">
+    <div class="flexColumn authItemBox">
+        <img class="authItemAvatar" src="/static/image/user/setting.svg" alt="">
+        <a class="settingBtn btn btn-outline-danger" href="/changePassword">Change password</a>
+        <a id="deleteAccount" data-userid="<%=user._id%>" class="settingBtn btn btn-outline-danger">Delete account</a>
+    </div>
+</div>
+
+
+<script src="/static/util/auth.js"></script>

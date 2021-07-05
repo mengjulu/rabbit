@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+    padding-top: 4rem;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    font-size: 0.8rem;
+}
+
+::placeholder {
+    font-size: 80%;
+}
+
+a:hover {
+    color: lightcoral;
+}
+
+.icon {
+    width: 2rem;
+}
+
+.btn {
+    font-size: 0.8rem;
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    height: 40vh;
+    justify-content: center;
+    margin-top: 10%;
+    font-size: 7vmin;
+}
+
+.errorItem {
+    align-self: center;
+}
+
+.searchResult {
+    border: 1px rgb(211, 211, 211, 0.4) solid;
+    border-radius: 5px;
+    width: 90vw;
+    min-height: 15vh;
+    margin: 2vmin;
+    padding: 1vmin;
+    font-size: 3vmin;
+}

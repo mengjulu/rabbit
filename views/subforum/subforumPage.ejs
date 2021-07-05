@@ -1,0 +1,72 @@
+<%- include("../includes/header")%>
+<%- include("../includes/navbar")%>
+
+<div class="container-fluid">
+    <%for (let sub of subforum) {%>
+    <div class="flexRow subforumTitle">
+        <img class="subforumImg" src="<%= sub.imgUrl%>" alt="">
+        <h2 class="subItem"><%= sub.name.toUpperCase() %></h2><span
+            class="badge bg-warning text-dark"><%= sub.post.length%> posts</span>
+
+        <button id="subBtn" class="subItem btn btn-outline-danger" data-sub="<%=sub.name%>"
+            type="submit"><%= user?.subscribed.includes(sub.name) ? "Unsubscribe" : "Subscribe"%></button>
+    </div>
+
+    <p><%= sub.description %> </p>
+    <div>
+    </div>
+    <hr>
+    <%if(sub.post.length !== 0){%>
+    <div class="flexRow">
+        <div class="flexColumn">
+            <div class="flexRow subTopBox">
+                <div class="dropdown">
+                    <button class="topLineBtn btn btn-danger dropdown-toggle" type="button" id="topLineDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        New
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="topLineDropdown">
+                        <a href="/r/<%= sub.name %>/create/post" class="dropdown-item">New post</a>
+                        <a href="/r/<%= sub.name %>create/link" class="dropdown-item">New link</a>
+                    </div>
+                </div>
+                <%- include("../includes/sort")%>
+            </div>
+
+            <%sub.post.forEach((post)=>{%>
+            <div class="flexRow subPost">
+                <%- include("../includes/vote",{e: post, poststate: post.poststate})%>
+                <div class="flexColumn subPostContent">
+                    <span>
+                        <a class="postTitle" href="/r/<%= sub.name %>/<%= post.title %>">
+                            <%= post.title %>
+                        </a>
+                        <a href="<%= post.url ? post.url : "javascript:void(0)" %>">
+                            <img src="/static/image/post/<%=post.url ? "link" : "post" %>.svg" class="postIcon"
+                                alt="link">
+                        </a>
+                    </span>
+                    <p class="postIntro">
+                        Posted by <a href="<%=post.user ? "/user/" + post.user : "javascript:void(0)"%>"><%= post.user ? post.user.account : "User" %></a>・
+                        <%= timeAgo(post.time)%>
+                    </p>
+                    <%- include("../includes/postAction",{e: post, subforum: sub, poststate: post.poststate, url: url, user: user})%>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+
+        <%}else{ %>
+        <div class="flexColumn subPageWarning">
+            Be the first one to post!
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="/r/<%= sub.name %>/create/post" class="btn btn-outline-danger">New post</a>
+                <a href="/r/<%= sub.name %>/create/link" class="btn btn-outline-danger">New link</a>
+            </div>
+        </div>
+        <%}%>
+        <%}%>
+    </div>
+</div>
+
+<script src="/static/util/subscribed.js"></script>

@@ -1,0 +1,17 @@
+<%- include("../../includes/header")%>
+<%- include("../../includes/navbar")%>
+
+<div class="container-fluid">
+    <form method="post" action="/login" class="flexColumn authItemBox">
+        <h5>Welcome back!</h5>
+        <img class="authItemAvatar" src="/static/image/user/loginBunny.svg" alt="">
+        <input type="text" class="authBoxInput" name="username" placeholder="Account" required>
+        <input type="password" class="authBoxInput" name="password" placeholder="Password" required>
+
+        <% if (message !== undefined && message != "") { %>
+        <span class="authErr"><%= message%></span>
+        <% } %>
+        <button class="btn btn-outline-danger authBoxItem">Login</button>
+        <p> Not a member yet? <a href="/register">Join now!</a></p>
+    </form>
+</div>

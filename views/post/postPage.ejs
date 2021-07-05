@@ -1,0 +1,29 @@
+<%- include("../includes/header")%>
+<%- include("../includes/navbar")%>
+
+<div class="container-fluid">
+    <div class="flexRow postPageBox">
+        <%for(let post of posts){%>
+            <%- include("../includes/vote", {e: post, poststate: post.poststate})%>
+        <div class="flexColumn fullPost">
+            <span class="postTitle"><%=post.title%></span>
+            <div class="flexRow postIntro">
+                <a href="/r/<%= post.subforum.name %>"> r/<%= post.subforum.name %> </a>
+                <p>・Posted by <a href="<%= post.user ? "/user/" + post.user.account : "javascript:void(0)" %>"><%= post.user ? post.user.account : "User" %></a>
+                    ・ <%= timeAgo(post.time)%></p>
+            </div>
+            <div class="singlePostContent">
+                <% if(post.url) {%>
+                <a href="<%= post.url %>"><%= post.url %></a>
+                <%}else{%>
+                <%= post.content  %>
+                <%}%>
+            </div>
+            <%- include("../includes/postAction", {e: post, subforum: post.subforum, url: url, poststate: post.poststate})%>
+            <%- include("../includes/comment", {e: post, comments: post.comment})%>
+        </div>
+            <%}%>
+    </div>
+</div>
+
+<script src="/static/util/comment.js"></script>

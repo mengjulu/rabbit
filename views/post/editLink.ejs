@@ -1,0 +1,21 @@
+<%- include("../includes/header")%>
+<%- include("../includes/navbar")%>
+<div class="container-fluid">
+    <%posts.forEach(post=>{%>
+    <form action="/r/<%=post.subforum.name%>/<%= post.title %>/editlink" method="POST" class="flexColumn createPostBox">
+        <img src="/static/image/post/link.svg" class="createImg">
+        <p>Create a new link</p>
+
+       <div class="flexColumn editBox">
+        <select name="subforum" class="subforumBtn btn btn-danger">
+            <option value="<%=post.subforum.id%>" selected><%=post.subforum.name%></option>
+        </select>
+            Title<input name="title" class="createLine" type="text" value="<%= post.title %>" readonly>
+       
+            Url<input name="url" class="createLine" value="<%= post.url %>">
+
+        <button type="submit" class="btn btn-danger postBtn">Update</button>
+    </div>
+    </form>
+    <%})%>
+</div>

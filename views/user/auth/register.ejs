@@ -1,0 +1,19 @@
+<%- include("../../includes/header")%>
+<%- include("../../includes/navbar")%>
+
+<div class="container-fluid">
+    <form method="post" action="/register" class="flexColumn authItemBox">
+        <h5>Join us now!</h5>
+        <img class="authItemAvatar" src="/static/image/user/registerBunny.svg" alt="">
+        <input type="text" class="authBoxInput" name="username" placeholder="Account" pattern="[a-zA-Z0-9]{4,}" required>
+        <p class="authWarning">It must be more thar 4 characters and alphabet only.</p>
+        <input type="password" class="authBoxInput" name="password" placeholder="Password" required>
+
+        <% if (message !== undefined && message != "") { %>
+        <span class="authErr"><%= message%></span>
+        <% } %>
+        
+        <button class="btn btn-outline-danger authBoxItem">Register</button>
+        <p> Already has account? <a href="/login">Login here!</a></p>
+    </form>
+</div>

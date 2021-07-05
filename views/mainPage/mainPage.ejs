@@ -1,0 +1,74 @@
+<%- include("../includes/header")%>
+<%- include("../includes/navbar")%>
+
+<div class="container-fluid">
+    <div class="flexRow">
+        <div class="flowColumn">
+            <div class="flexRow topLineBox">
+                <!-- all sub dropdown -->
+                <div class="dropdown allSub">
+                    <button class="topLineBtn btn btn-danger dropdown-toggle" type="button" id="topLineDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        All subs
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="topLineDropdown">
+                        <%for(let sub of subforum) {%>
+                        <a class="dropdown-item" href="/r/<%= sub.name%>">r/<%= sub.name%></a>
+                        <%}%>
+                        <hr>
+                        <a class="dropdown-item" href="/r/create">＋ Add new sub</a>
+                    </div>
+                </div>
+                <!-- post dropdown -->
+                <div class="dropdown">
+                    <button class="topLineBtn btn btn-danger dropdown-toggle" type="button" id="topLineDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        New
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="topLineDropdown">
+                        <a href="/create/post" class="createPost dropdown-item">New post</a>
+                        <a href="/create/link" class="createLink dropdown-item">New link</a>
+                    </div>
+                </div>
+                <!-- sort dropdown -->
+                <%- include("../includes/sort")%>
+                    </div>
+                        <% posts.forEach(post => { %>
+                    <div class="flexRow post">
+                        <%- include("../includes/vote", {e: post, poststate: post.poststate})%>
+                        <div class="flexColumn postContent">
+                            <span>
+                                <a class="postTitle" href="/r/<%= post.subforum.name %>/<%= post.title %>">
+                                    <%= post.title %>
+                                </a>
+                                <a href="<%= post.url ? post.url : "javascript:void(0)" %>">
+                                    <img src="/static/image/post/<%=post.url ? "link" : "post" %>.svg" class="postIcon"
+                                        alt="link">
+                                </a>
+                            </span>
+                            <p class="postIntro">
+                                <a href="/r/<%= post.subforum.name %>">r/<%= post.subforum.name %> </a>
+                                ・Posted by <a href="<%=post.user ? "/user/" + post.user.account : "javascript:void(0)" %>">
+                                    <%= post.user ? post.user.account : "User" %></a> ・ <%= timeAgo(post.time)%>
+                            </p>
+                            <%- include("../includes/postAction", {e: post, subforum: post.subforum, url: url, user: user, poststate: post.poststate}) %>
+
+                        </div>
+                    </div>
+                    <%})%>
+                </div>
+
+                <div class="flowColumn sideBox">
+                    <p> All subforum
+                        <a href="/r/create"><img src="/static/image/post/add.svg" class="sideSubIcon" alt="add"></a>
+                    </p>
+
+                    <div class="flowColumn sideSubForumBox">
+                        <%for(let sub of subforum) {%>
+                        <a class="btn btn-outline-warning sideSubForumBtn" href="/r/<%= sub.name%>">r/<%= sub.name%></a>
+                        <%}%>
+            </div>
+        </div>
+    </div>
+</div>
+<body>

@@ -1,0 +1,32 @@
+<header class="bg-danger text-white fixed-top">
+  <div class="container-fluid">
+    <div class="d-flex flex-wrap align-items-center justify-content-end">
+      <div class="align-items-start brandIcon">
+        <img class="icon" src="/static/image/navbar/rabbit.svg">
+        <a class="text-white" href="/">RABBIT</a>
+      </div>
+
+
+      <form class="searchBar" action="/search" method="POST">
+        <input name="search" type="search" class="form-control form-control-dark" placeholder="Search" required>
+      </form>
+
+      <div class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="/static/image/navbar/userIcon.svg" class="icon" alt="">
+      </div>
+
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <%if (!user) {%>
+        <a class="dropdown-item" href="/login">Login / Sign up</a>
+        <%}else{%>
+        <p class="navbarDropdown">Hello! <%= user.account%></p>
+        <a class="dropdown-item" href="/user/<%= user.account%>">Profile</a>
+        <a class="dropdown-item" href="/user/settings">Settings</a>
+        <hr>
+        <a class="dropdown-item" href="/logout">Log out</a>
+        <%}%>     
+      </div>
+     </div>
+    </div>
+  </div>
+</header>

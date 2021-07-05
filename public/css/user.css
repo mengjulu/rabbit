@@ -1,0 +1,96 @@
+/* auth page */
+
+.authItemBox {
+    padding: 2vmin;
+    height: 90vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.authItemBox a{
+    font-size: 1rem;
+}
+
+.authWarning {
+    color: lightgrey;
+    font-size: 0.5rem;
+    margin: 0;
+}
+
+.authItemAvatar {
+    width: 25vmin;
+    height: 25vmin;
+    margin: 2vmin;
+}
+
+.authBoxItem {
+    width: 27vmin;
+    padding: 2vmin;
+    margin: 1vmin;
+}
+
+.authBoxInput{
+    width: 27vmin;
+    padding: 2vmin;
+    margin: 1vmin;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+.authErr{
+    color: crimson;
+    font-size: 2.5vmin;
+    border: solid 1px;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgba(220, 20, 60, 0.2);
+}
+
+
+@media screen and (max-width: 768px) {
+    .authBoxItem {
+        width: 30vmin;
+    }
+    .authBoxInput {
+        width: 30vmin;
+    }
+}
+/* setting */
+
+.settingBtn{
+    margin: 2vmin;
+    width: 32vmin;
+}
+
+/* profile */
+
+.profileBox {
+    width: 75vw;
+}
+
+.profileSideBox{
+    border: 1px rgb(211, 211, 211, 0.4) solid;
+    border-radius: 5px;
+    margin: 2vmin;
+    padding: 1vmin;
+    width: 20vw;
+    max-height: 35vh;
+    position: fixed;
+    right: 0;
+    justify-content: center;
+    text-align: center;
+}
+.profileSideItem{
+    max-height: 22vh;
+    margin: 0.5vmin 1vmin;
+    font-size: 1rem;
+    overflow: scroll;
+
+}
+@media screen and (max-width: 768px) {
+
+    .profileBox {
+        width: 95vw;
+    }
+}

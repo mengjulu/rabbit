@@ -2,7 +2,7 @@
 A reddit clone practice project using Node.js / express / EJS / mongodb (mongoose) / passport.js.
 
 ## Deployment
-https://dazzling-acadia-06829.herokuapp.com/
+https://tranquil-kenai-fjords-71751.herokuapp.com/
 
 ## Feature
 ###### Mainpage
